@@ -1,0 +1,16 @@
+<form action="" method="post">
+Current production capacity in tons per day:
+<br />
+<input type="number" />
+<br /><br /><br />
+Current raw materials required in tons per day:
+<br /><br />
+{% for rawMatName in rawMatNames %}
+{{ rawMatName.0 }}
+<br />
+Quantity:
+<input type="number" id="{{ rawMatName.1 }}" />
+<br /><br />
+{% endfor %}
+<button type="submit" value="Submit">Submit</button>
+</form>

@@ -1,0 +1,30 @@
+<html>
+
+<script type="text/javascript">
+    function addField(){
+        var number = document.getElementById("numberOfFields").value;
+        var fieldContainer = document.getElementById("fields");
+        var input = document.createElement("input");
+        input.type = "text";
+        input.setAttribute("id", "rmn"+number);
+        input.setAttribute("name", "rawMatName"+number);
+        fieldContainer.appendChild(input);
+        fieldContainer.appendChild(document.createElement("br"));
+        document.getElementById("numberOfFields").setAttribute("value", parseInt(number)+1)
+    }
+</script>
+
+List the raw materials required:
+<form action="" method="post">
+{% csrf_token %}
+<div id="fields">
+<input name="rawMatName1" id="rmn1" />
+<br />
+</div>
+<button type="submit" value="Submit">Submit</button>
+<input type="hidden" name="numberOfFields" id="numberOfFields" value="2" />
+</form>
+
+<button name="addField" onclick="addField()">Add Field</button>
+
+</html>
