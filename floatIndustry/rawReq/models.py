@@ -14,5 +14,9 @@ class rawMat(models.Model):
     name = models.CharField(max_length=40)
     rawMatList = models.ManyToManyField(rawMatLists)
 
-#    def createRawMat(self, name):
-#        self.name = name
+    def createRawMat(self, name):
+        self.name = name
+        return self
+
+    def addList(self, list_name):
+        self.rawMatList.add(list_name)

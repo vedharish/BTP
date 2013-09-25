@@ -14,9 +14,17 @@
     }
 </script>
 
-List the raw materials required:
 <form action="" method="post">
 {% csrf_token %}
+Name of the list:
+<br />
+<input name="name_of_list" />
+<br />
+The color of glass produced:
+<br />
+<input name="color_of_glass" />
+<br />
+List the raw materials required:
 <div id="fields">
 <input name="rawMatName1" id="rmn1" />
 <br />
