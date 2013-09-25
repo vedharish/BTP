@@ -21,6 +21,13 @@ def index(request):
                 raw_material_object = models.rawMat.objects.create(name=request.POST['rawMatName'+str(x+1)])
                 raw_material_object.rawMatList.add(list_object)
         
+        list1 = models.rawMatLists.objects.get(listName = "odd")
+        components = models.rawMat.objects.filter(rawMatList = list1)
+        print(list1.listName)
+        print(list1.forColor)
+        for component in components:
+            print(component.name)
+
         context.update({'rawMatNames': rawMatNamesList})
         return render_to_response('createCurrentReq.html', context)
     else:
