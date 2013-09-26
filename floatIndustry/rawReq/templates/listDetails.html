@@ -1,0 +1,21 @@
+<script type="text/javascript">
+   function changed(){
+      var desiredCapacity = document.getElementById('desired_quantity').value;
+      alert(desiredCapacity);
+   }
+</script>
+List Name : {{ list_listDetails.0 }}
+<br/>
+Color : {{ list_listDetails.1 }}
+<br />
+Default Capacity : {{ list_listDetails.2 }}
+<br />
+Desired quantity :
+<input type="number" name="desired_quantity" id="desired_quantity" onchange="changed();"></input>
+{% for rawMaterial in list_rawMatDetails %}
+<ul>
+<li>{{ rawMaterial.0 }}</li>
+<li>Quantity: {{ rawMaterial.1 }}</li>
+</ul>
+<br />
+{% endfor %}

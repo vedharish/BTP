@@ -1,0 +1,13 @@
+{% for listObj in lists %}
+<ul>
+<li>
+List Name : <a href="list/{{ listObj.3 }}">{{ listObj.0 }}</a>
+</li>
+<li>
+Color : {{ listObj.1 }}
+</li>
+<li>
+Default Quantity : {{ listObj.2 }}
+</li>
+</ul>
+{% endfor %}
