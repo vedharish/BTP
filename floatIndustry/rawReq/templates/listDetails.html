@@ -1,7 +1,12 @@
 <script type="text/javascript">
    function changed(){
       var desiredCapacity = document.getElementById('desired_quantity').value;
-      alert(desiredCapacity);
+      var i = 1;
+      for(i=1; i<={{ number_rawMat }}; i++){
+          var rawMatQuantity = document.getElementById("id"+i).innerHTML;
+          var valueToWrite = desiredCapacity/{{ list_listDetails.2 }}*rawMatQuantity;
+          alert(valueToWrite);
+      }
    }
 </script>
 List Name : {{ list_listDetails.0 }}
@@ -15,7 +20,8 @@ Desired quantity :
 {% for rawMaterial in list_rawMatDetails %}
 <ul>
 <li>{{ rawMaterial.0 }}</li>
-<li>Quantity: {{ rawMaterial.1 }}</li>
+<li>Quantity: 
+<div id="{{ rawMaterial.2 }}" type="hidden">{{ rawMaterial.1 }}</div></li>
 </ul>
 <br />
 {% endfor %}

@@ -7,11 +7,14 @@ def listDetails(request, list_id):
     context = {}
     rawMatList = []
     list_object = models.rawMatLists.objects.get(id=list_id)
+    i = 1
     for rawMaterials in models.rawMat.objects.filter(rawMatList=list_object):
         querySet = models.rawMatAttrib.objects.filter(rawMatList=list_object, rawMat=rawMaterials)
-        rawMatList.append([rawMaterials.name, querySet[0].quantity])
+        rawMatList.append([rawMaterials.name, querySet[0].quantity, "id"+str(i)])
+        i = i + 1
     context.update({'list_rawMatDetails': rawMatList})
     context.update({'list_listDetails': [list_object.listName, list_object.forColor, list_object.currentCapacity]})
+    context.update({'number_rawMat': i-1})
     return render_to_response('listDetails.html', context)
 
 def listAll(request):
