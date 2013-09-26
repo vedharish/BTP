@@ -9,19 +9,19 @@ def index(request):
         name_of_list = request.POST['name_of_list']
         color_of_glass = request.POST['color_of_glass']
         
-        list_object = models.rawMatLists.objects.create(listName=name_of_list, forColor=color_of_glass)
+        list_object = models.rawMatLists.objects.get_or_create(listName=name_of_list, forColor=color_of_glass)
         
         context = {}
         rawMatNamesList = []
         
         for x in xrange(number_fields):
             if request.POST['rawMatName'+str(x+1)] != '':
-                tempList = [request.POST['rawMatName'+str(x+1)], 'quantity'+request.POST['rawMatName'+str(x+1)]]
+                tempList = [request.POST['rawMatName'+str(x+1)], 'quantity'+request.POST['quantity'+str(x+1)]]
                 rawMatNamesList.append(tempList)
-                raw_material_object = models.rawMat.objects.create(name=request.POST['rawMatName'+str(x+1)])
-                raw_material_object.rawMatList.add(list_object)
+                raw_material_object = models.rawMat.objects.get_or_create(name=request.POST['rawMatName'+str(x+1)])
+                raw_material_object[0].rawMatList.add(list_object[0])
         
-        list1 = models.rawMatLists.objects.get(listName = "odd")
+        list1 = models.rawMatLists.objects.get(listName = name_of_list)
         components = models.rawMat.objects.filter(rawMatList = list1)
         print(list1.listName)
         print(list1.forColor)

@@ -9,6 +9,13 @@
         input.setAttribute("id", "rmn"+number);
         input.setAttribute("name", "rawMatName"+number);
         fieldContainer.appendChild(input);
+        var text_node = document.createTextNode("Quantity:");
+        fieldContainer.appendChild(text_node);
+        var quantity_input = document.createElement("input");
+        quantity_input.type = "number";
+        quantity_input.setAttribute("id", "quantity"+number);
+        quantity_input.setAttribute("name", "quantity"+number);
+        fieldContainer.appendChild(quantity_input);
         fieldContainer.appendChild(document.createElement("br"));
         document.getElementById("numberOfFields").setAttribute("value", parseInt(number)+1)
     }
@@ -26,7 +33,7 @@ The color of glass produced:
 <br />
 List the raw materials required:
 <div id="fields">
-<input name="rawMatName1" id="rmn1" />
+<input type="text" name="rawMatName1" id="rmn1" />Quantity:<input type="number" name="quantity1" id="quantity1" />
 <br />
 </div>
 <button type="submit" value="Submit">Submit</button>

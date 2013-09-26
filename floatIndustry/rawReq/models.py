@@ -7,3 +7,8 @@ class rawMatLists(models.Model):
 class rawMat(models.Model):
     name = models.CharField(max_length=40)
     rawMatList = models.ManyToManyField(rawMatLists)
+
+class rawMatAttrib(models.Model):
+    rawMatList = models.ForeignKey(rawMatLists)
+    rawMat = models.ForeignKey(rawMat)
+    quantity = models.DecimalField(max_digits=5, decimal_places=3)
